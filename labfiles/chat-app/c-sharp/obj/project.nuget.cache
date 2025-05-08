@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "ogm9bIjoMjM=",
+  "success": false,
+  "projectFilePath": "d:\\Jonnathan\\2025\\AIFoundry\\mslearn-ai-foundry\\mslearn-ai-studio\\labfiles\\chat-app\\c-sharp\\chat_app.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://pkgs.dev.azure.com/extcdelabarrab/abdde1a9-08ea-4004-b4f6-5049cba2797e/_packaging/Frabrikam_Feed/nuget/v3/index.json.\r\n  Response status code does not indicate success: 404 (Not Found).",
+      "libraryId": "Microsoft.Extensions.Configuration.Json"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://pkgs.dev.azure.com/extcdelabarrab/LandingBFPE/_packaging/BFE_Packages/nuget/v3/index.json.\r\n  Response status code does not indicate success: 404 (Not Found).",
+      "libraryId": "Microsoft.Extensions.Configuration.Json"
+    },
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://pkgs.dev.azure.com/extcdelabarrab/abdde1a9-08ea-4004-b4f6-5049cba2797e/_packaging/Frabrikam_Feed/nuget/v3/index.json."
+    },
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://pkgs.dev.azure.com/extcdelabarrab/LandingBFPE/_packaging/BFE_Packages/nuget/v3/index.json."
+    }
+  ]
+}

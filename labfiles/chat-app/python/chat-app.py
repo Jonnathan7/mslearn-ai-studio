@@ -1,7 +1,11 @@
 import os
+import openai
 
 # Add references
-
+from dotenv import load_dotenv
+from azure.identity import DefaultAzureCredential
+from azure.ai.projects import AIProjectClient
+from azure.ai.inference.models import SystemMessage, UserMessage, AssistantMessage
 
 def main(): 
 
@@ -16,13 +20,25 @@ def main():
         model_deployment =  os.getenv("MODEL_DEPLOYMENT")
         
         # Initialize the project client
+        projectClient = AIProjectClient.from_connection_string(
+            conn_str=project_connection,
+            credential=DefaultAzureCredential())
+
+        # Get a chat client
+        # chat = projectClient.inference.get_chat_completions_client()
         
+        # Get a chat client with Open AI
+        openai_client = projectClient.inference.get_azure_openai_client(api_version="2024-10-21")
 
-        ## Get a chat client
-
-
-        ## Initialize prompt with system message
-         
+        # Initialize prompt with system message
+        # prompt=[
+        #        SystemMessage("You are a helpful AI assistant that answers questions.")
+        #    ]
+  
+        # Initialize prompt with system message with Open AI
+        prompt=[
+            {"role": "system", "content": "You are a helpful AI assistant that answers questions."}
+        ]
 
         # Loop until the user types 'quit'
         while True:
@@ -35,8 +51,23 @@ def main():
                 continue
             
             # Get a chat completion
+            #prompt.append(UserMessage(input_text))
+            #response = chat.complete(
+            #    model=model_deployment,
+            #    messages=prompt)
+            #completion = response.choices[0].message.content
+            #print(completion)
+            #prompt.append(AssistantMessage(completion))
 
-
+            # Get a chat completion with Open AI
+            prompt.append({"role": "user", "content": input_text})
+            response = openai_client.chat.completions.create(
+                model=model_deployment,
+                messages=prompt)
+            completion = response.choices[0].message.content
+            print(completion)
+            prompt.append({"role": "assistant", "content": completion})
+            
     except Exception as ex:
         print(ex)
 
